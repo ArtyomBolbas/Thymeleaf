@@ -1,6 +1,7 @@
 # Thymeleaf
 
 **This is the project in which I create my study site.**
+
 **Project development is carried out in Java 1.8**
 
 ### Used technologies:
