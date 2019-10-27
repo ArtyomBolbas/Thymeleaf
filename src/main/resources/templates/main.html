@@ -1,12 +1,46 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Welcome page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Welcome page</title>
 </head>
 <body>
+	<!-- Check if errorMessage is not null and not empty -->
+	<div th:if="${errorMessage}" th:utext="${errorMessage}"  style="color:red;font-style:italic;"></div>
+	<!--<div>
+		<form th:action="@{/main}" th:object="${messageForm}" method="post">
+			<input type="text" th:field="*{text}" id="text" placeholder="Введите текст"/>
+			<input type="text" th:field="*{tag}" placeholder="Введите тэг"/>
+			<input type="submit" value="Add" />
+		</form>
+	</div>-->
+
+	<!--<div>
+		<form th:action="@{/main}" th:object="${messageForm}" method="post">
+			<input type="text" th:value="${messageForm.text}" id="text" name="text" placeholder="Введите текст"/>
+			<input type="text" th:value="${messageForm.tag}" id="tag" name="tag" placeholder="Введите тэг"/>
+			<input type="submit" value="Add" />
+		</form>
+	</div>-->
+	
 	<div>
-		<p th:text="'It is welcome page - ' + ${some}"/>
+		<form method="post">
+			<input type="text" name="text" placeholder="Введите текст"/>
+			<input type="text" name="tag" placeholder="Введите тэг"/>
+			<input type="submit" value="Add" />
+		</form>
 	</div>
+
+	<div>Список сообщений</div>
+	<div>
+		<table>
+			<tr th:each="message : ${messages}">
+				<td th:utext="${message.id}"></td>
+				<td th:utext="${message.text}"></td>
+				<td th:utext="${message.tag}"></td>
+			</tr>
+		</table>
+	</div>
+
 </body>
 </html>
